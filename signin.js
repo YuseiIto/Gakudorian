@@ -13,8 +13,7 @@ function Signin(email, password) {
 
     if (user) {
         // User is signed in.
-
-        alert(user.email + "is signed in.");
+        alert(user.email + " is signed in.");
     } else {
         // No user is signed in.
     }
