@@ -23,11 +23,11 @@
     <td> <input type = "button" value = "削除" onclick = "deleteChild(' + p + ');" ></td>'
 
 
-        document.getElementById("child_ID_" + p) = ID;
-        document.getElementById("child_Name_" + p) = Name;
-        document.getElementById("child_Allergie_" + p) = Allergie;
-        document.getElementById("child_Grade_" + p) = Grade;
-        document.getElementById("child_Note_" + p) = Note;
+        document.getElementById("child_ID_" + p).value = ID;
+        document.getElementById("child_Name_" + p).value = Name;
+        document.getElementById("child_Allergie_" + p).value = Allergie;
+        document.getElementById("child_Grade_" + p).value = Grade;
+        document.getElementById("child_Note_" + p).value = Note;
 
         document.getElementById("children").appendChild(elm);
 
