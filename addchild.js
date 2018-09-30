@@ -39,7 +39,7 @@
         var elm = document.createElement("tr");
         elm.id = "Child" + i
 
-        let str = "";
+        var str = "";
         if (flg) {
             str = GenelateID();
         }
