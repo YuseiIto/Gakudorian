@@ -39,9 +39,9 @@
         var elm = document.createElement("tr");
         elm.id = "Child" + i
 
-        let str = GenelateID();
-        if (flg) {
-            str = "";
+        let str = "";
+        if (!flg) {
+            str = GenelateID();
         }
         elm.innerHTML = '<td> <h4 id ="child_ID_' + p + '">' + str + ' </h4></td>\
     <td><input type = "text" id = "child_Name_' + p + '"></td>\
