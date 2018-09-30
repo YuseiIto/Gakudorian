@@ -21,6 +21,8 @@
     <td> <input type = "text"  id = "child_Note_' + p + '" > </td>\
     <td> <input type = "button"value = "保存" onclick = "saveChild(' + p + ');"></td>\
     <td> <input type = "button" value = "削除" onclick = "deleteChild(' + p + ');" ></td>'
+        document.getElementById("children").appendChild(elm);
+
 
 
         document.getElementById("child_ID_" + p).value = ID;
@@ -29,7 +31,7 @@
         document.getElementById("child_Grade_" + p).value = Grade;
         document.getElementById("child_Note_" + p).value = Note;
 
-        document.getElementById("children").appendChild(elm);
+
 
 
     }
