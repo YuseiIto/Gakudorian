@@ -1,5 +1,5 @@
     let signedGakudo = "Donguri" //TODO: Meke it Generic
-    var Children_ref = firebase.database().ref('Gakudo/' + signedGakudo + "/Children");
+    var Children_ref = firebase.database().ref('Gakudo/' + signedGakudo + "/Children/");
     ReloadDB();
 
 
