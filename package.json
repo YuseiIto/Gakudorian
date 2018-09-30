@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/YuseiIto/Gakudorian/issues"
   },
-  "homepage": "https://github.com/YuseiIto/Gakudorian#readme"
+  "homepage": "https://github.com/YuseiIto/Gakudorian#readme",
+  "dependencies": {
+    "handsontable": "^6.0.0"
+  }
 }

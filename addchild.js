@@ -1,11 +1,35 @@
     let signedGakudo = "Donguri" //TODO: Meke it Generic
     var Children_ref = firebase.database().ref('Gakudo/' + signedGakudo + "/Children/");
-    ReloadDB();
 
+    var IDList = []; //Global
 
-    Children_ref.on('value', function(snapshot) {
-        //updateStarCount(postElement, snapshot.val());
-    });
+    function RandomString() {
+        // 生成する文字列の長さ
+        var l = 8;
+
+        // 生成する文字列に含める文字セット
+        var c = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+        var cl = c.length;
+        var r = "";
+        for (var i = 0; i < l; i++) {
+            r += c[Math.floor(Math.random() * cl)];
+        }
+        return r;
+    }
+
+    function GenelateID() {
+        ReloadDB();
+        var random = RandomString(); //これがIDの候補
+
+        //すでに発行済のIDかどうか調べ、発行済なら再生成
+        while (IDList.indexOf(random) != -1) {
+            ReloadDB();
+            random = RandomString();
+        }
+
+        return random;
+    }
 
 
     function add() {
@@ -14,7 +38,7 @@
         var p = i;
         var elm = document.createElement("tr");
         elm.id = "Child" + i
-        elm.innerHTML = '<td> <input type ="text" id ="child_ID_' + p + '"> </td>\
+        elm.innerHTML = '<td> <h4 id ="child_ID_' + p + '">' + GenelateID() + ' </h4></td>\
     <td><input type = "text" id = "child_Name_' + p + '"></td>\
     <td> <input type = "text" id = "child_Allergie_' + p + '"></td>\
     <td> <input type = "text"  id = "child_Grade_' + p + '"> </td>\
@@ -42,7 +66,7 @@
 
         }
 
-        document.getElementById("child_ID_" + p).value = trim(ID);
+        document.getElementById("child_ID_" + p).innerText = trim(ID);
         document.getElementById("child_Name_" + p).value = trim(Name);
         document.getElementById("child_Allergie_" + p).value = trim(Allergie);
         document.getElementById("child_Grade_" + p).value = trim(Grade);
@@ -54,6 +78,7 @@
 
     }
 
+
     function ReloadDB() {
         Children_ref.once('value').then(function(snapshot) {
 
@@ -63,6 +88,7 @@
                 // childData will be the actual contents of the child
                 var childData = childSnapshot.val();
 
+                IDList.push(ID); //Add to the ID list.
 
                 //Get Values of each field
                 var Name = childData.Name;
@@ -79,6 +105,14 @@
     }
 
 
+    //ページ読み込み時に実行
+    ReloadDB();
+    Children_ref.on('value', function(snapshot) {
+        ReloadDB();
+    });
+    //======================================================
+
+
 
 
     function deleteChild(i) {
@@ -88,7 +122,7 @@
 
     function saveChild(i) {
 
-        var ID = document.getElementById("child_ID_" + i).value;
+        var ID = document.getElementById("child_ID_" + i).innerText;
         var _Name = document.getElementById("child_Name_" + i).value;
         var _Allergie = document.getElementById("child_Allergie_" + i).value;
         var _Grade = document.getElementById("child_Grade_" + i).value;
