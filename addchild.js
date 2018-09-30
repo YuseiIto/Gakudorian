@@ -89,7 +89,7 @@
         Children_ref.once('value').then(function(snapshot) {
 
             IDList = [0]; //Reset
-            doxument.getElementById("children").innerHTML = '  <tr>\
+            document.getElementById("children").innerHTML = '  <tr>\
                 <th> ID</th >\
                     <th>氏名</th>\
                     <th>アレルギー(カンマ区切り)</th>\
