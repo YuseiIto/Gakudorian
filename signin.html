@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <title>がくどりあん!</title>
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDhjygyEDNC9eOAeMidB1csms5vCCMpUlk",
+            authDomain: "gakudorian.firebaseapp.com",
+            databaseURL: "https://gakudorian.firebaseio.com",
+            projectId: "gakudorian",
+            storageBucket: "gakudorian.appspot.com",
+            messagingSenderId: "187436155888"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+
+    <script src="index.js"></script>
+    <script src="signin.js"></script>
+</head>
+
+<body>
+
+
+    <div id="wrap">
+
+        <form>
+
+            <table>
+
+                <tr>
+
+                    <td>
+                        Email
+                    </td>
+                    <td>
+                        <input type="email" id="username">
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td>
+                        パスワード
+                    </td>
+                    <td>
+                        <input type="password" id="password">
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td colspan="2">
+                        <input type="button" value="ログイン" onclick="Signin(document.getElementById('username').value,document.getElementById('password').value);">
+                    </td>
+                </tr>
+
+            </table>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
