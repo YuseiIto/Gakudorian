@@ -88,6 +88,17 @@
     function ReloadDB() {
         Children_ref.once('value').then(function(snapshot) {
 
+            IDList = [0]; //Reset
+            doxument.getElementById("children").innerHTML = '  <tr>\
+                <th> ID</th >\
+                    <th>氏名</th>\
+                    <th>アレルギー(カンマ区切り)</th>\
+                    <th>学年(1-6)</th>\
+                    <th>備考</th>\
+                    <th>保護者</th>\
+                    <td><input type="button" value="+" onclick="add(false);"></td>\
+            </tr>';
+
             snapshot.forEach(function(childSnapshot) {
                 // key will be "ada" the first time and "alan" the second time
                 var ID = childSnapshot.key;
