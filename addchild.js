@@ -7,7 +7,7 @@ function add() {
     var elm = document.createElement("tr");
     elm.id = "Child" + i
     elm.innerHTML = '<td> <input type ="text" id ="child_ID_' + p + '"> </td>\
-    <td><input type = "text" id = "child_Name_' + p + ' "></td>\
+    <td><input type = "text" id = "child_Name_' + p + '"></td>\
     <td> <input type = "text" id = "child_Allergie_' + p + '"></td>\
     <td> <input type = "text"  id = "child_Grade_' + p + '"> </td>\
     <td> <input type = "text"  id = "child_Note_' + p + '" > </td>\
@@ -27,5 +27,18 @@ function deleteChild(i) {
 
 function saveChild(i) {
 
+    var ID = document.getElementById("child_ID_" + i).value;
+    var _Name = document.getElementById("child_Name_" + i).value;
+    var _Allergie = document.getElementById("child_Allergie_" + i).value;
+    var _Grade = document.getElementById("child_Grade_" + i).value;
+    var _Note = document.getElementById("child_Note_" + i).value;
+
+    let signedGakudo = "Donguri" //TODO: Meke it Generic
+    firebase.database().ref('Gakudo/' + signedGakudo + "/Children/" + ID).set({
+        Name: _Name,
+        Allergie: _Allergie,
+        Grade: _Grade,
+        Note: _Note
+    });
 
 }
