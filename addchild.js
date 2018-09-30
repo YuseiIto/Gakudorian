@@ -1,7 +1,7 @@
     let signedGakudo = "Donguri" //TODO: Meke it Generic
     var Children_ref = firebase.database().ref('Gakudo/' + signedGakudo + "/Children/");
 
-    var IDList = []; //Global
+    var IDList = [0]; //Global
 
     function RandomString() {
         // 生成する文字列の長さ
@@ -32,13 +32,18 @@
     }
 
 
-    function add() {
+    function add(flg) {
 
         var i = document.getElementById("children").childElementCount;
         var p = i;
         var elm = document.createElement("tr");
         elm.id = "Child" + i
-        elm.innerHTML = '<td> <h4 id ="child_ID_' + p + '">' + GenelateID() + ' </h4></td>\
+
+        let str = GenelateID();
+        if (flg) {
+            str = "";
+        }
+        elm.innerHTML = '<td> <h4 id ="child_ID_' + p + '">' + str + ' </h4></td>\
     <td><input type = "text" id = "child_Name_' + p + '"></td>\
     <td> <input type = "text" id = "child_Allergie_' + p + '"></td>\
     <td> <input type = "text"  id = "child_Grade_' + p + '"> </td>\
@@ -52,7 +57,7 @@
 
     function Display(ID, Name, Allergie, Grade, Parent, Note) {
 
-        add();
+        add(true);
 
 
         var trim = function(arg) {
