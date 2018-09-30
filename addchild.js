@@ -40,7 +40,7 @@
         elm.id = "Child" + i
 
         let str = "";
-        if (!flg) {
+        if (flg) {
             str = GenelateID();
         }
 
