@@ -8,8 +8,7 @@
     });
 
 
-
-    function Display(ID, Name, Allergie, Grade, Note) {
+    function add() {
 
         var i = document.getElementById("children").childElementCount;
         var p = i;
@@ -19,10 +18,17 @@
     <td><input type = "text" id = "child_Name_' + p + '"></td>\
     <td> <input type = "text" id = "child_Allergie_' + p + '"></td>\
     <td> <input type = "text"  id = "child_Grade_' + p + '"> </td>\
+    <td> <input type = "text"  id = "child_Parent_' + p + '" > </td>\
     <td> <input type = "text"  id = "child_Note_' + p + '" > </td>\
     <td> <input type = "button"value = "保存" onclick = "saveChild(' + p + ');"></td>\
     <td> <input type = "button" value = "削除" onclick = "deleteChild(' + p + ');" ></td>'
         document.getElementById("children").appendChild(elm);
+
+    }
+
+    function Display(ID, Name, Allergie, Grade, Parent, Note) {
+
+        add();
 
 
         var trim = function(arg) {
@@ -40,6 +46,7 @@
         document.getElementById("child_Name_" + p).value = trim(Name);
         document.getElementById("child_Allergie_" + p).value = trim(Allergie);
         document.getElementById("child_Grade_" + p).value = trim(Grade);
+        document.getElementById("child_Parent_" + p).value = trim(Parent);
         document.getElementById("child_Note_" + p).value = trim(Note);
 
 
@@ -61,9 +68,10 @@
                 var Name = childData.Name;
                 var Allergie = childData.Name;
                 var Grade = childData.Grade;
+                var Parent = childData.Parent;
                 var Note = childData.Note;
 
-                Display(ID, Name, Allergie, Grade, Note);
+                Display(ID, Name, Allergie, Grade, Parent, Note);
 
             });
 
@@ -71,27 +79,7 @@
     }
 
 
-    function add() {
 
-        var i = document.getElementById("children").childElementCount;
-        var p = i;
-
-
-        var elm = document.createElement("tr");
-        elm.id = "Child" + i
-        elm.innerHTML = '<td> <input type ="text" id ="child_ID_' + p + '"> </td>\
-    <td><input type = "text" id = "child_Name_' + p + '"></td>\
-    <td> <input type = "text" id = "child_Allergie_' + p + '"></td>\
-    <td> <input type = "text"  id = "child_Grade_' + p + '"> </td>\
-    <td> <input type = "text"  id = "child_Note_' + p + '" > </td>\
-    <td> <input type = "button"value = "保存" onclick = "saveChild(' + p + ');"></td>\
-    <td> <input type = "button" value = "削除" onclick = "deleteChild(' + p + ');" ></td>'
-
-
-
-        document.getElementById("children").appendChild(elm);
-
-    }
 
     function deleteChild(i) {
         //自分を削除
