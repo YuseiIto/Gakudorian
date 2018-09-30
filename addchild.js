@@ -43,6 +43,7 @@
         if (!flg) {
             str = GenelateID();
         }
+
         elm.innerHTML = '<td> <h4 id ="child_ID_' + p + '">' + str + ' </h4></td>\
     <td><input type = "text" id = "child_Name_' + p + '"></td>\
     <td> <input type = "text" id = "child_Allergie_' + p + '"></td>\
@@ -57,7 +58,7 @@
 
     function Display(ID, Name, Allergie, Grade, Parent, Note) {
 
-        add(true);
+        add(false);
 
 
         var trim = function(arg) {
