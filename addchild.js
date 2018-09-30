@@ -8,6 +8,7 @@
     });
 
 
+
     function Display(ID, Name, Allergie, Grade, Note) {
 
         var i = document.getElementById("children").childElementCount;
@@ -24,12 +25,22 @@
         document.getElementById("children").appendChild(elm);
 
 
+        var trim = function(arg) {
 
-        document.getElementById("child_ID_" + p).value = ID;
-        document.getElementById("child_Name_" + p).value = Name;
-        document.getElementById("child_Allergie_" + p).value = Allergie;
-        document.getElementById("child_Grade_" + p).value = Grade;
-        document.getElementById("child_Note_" + p).value = Note;
+            let a = arg;
+            if (arg == undefined || arg == null || arg == false) {
+                a = "";
+            }
+
+            return a;
+
+        }
+
+        document.getElementById("child_ID_" + p).value = trim(ID);
+        document.getElementById("child_Name_" + p).value = trim(Name);
+        document.getElementById("child_Allergie_" + p).value = trim(Allergie);
+        document.getElementById("child_Grade_" + p).value = trim(Grade);
+        document.getElementById("child_Note_" + p).value = trim(Note);
 
 
 
