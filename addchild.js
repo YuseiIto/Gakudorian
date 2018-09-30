@@ -71,6 +71,7 @@
 
         }
 
+        var p = document.getElementById("children").childElementCount - 1;
         document.getElementById("child_ID_" + p).innerText = trim(ID);
         document.getElementById("child_Name_" + p).value = trim(Name);
         document.getElementById("child_Allergie_" + p).value = trim(Allergie);
