@@ -97,7 +97,7 @@
                     <th>学年(1-6)</th>\
                     <th>備考</th>\
                     <th>保護者</th>\
-                    <td><input type="button" value="+" onclick="add(false);"></td>\
+                    <td><input type="button" value="+" onclick="add(true);"></td>\
             </tr>';
 
             snapshot.forEach(function(childSnapshot) {
@@ -152,5 +152,13 @@
             Grade: _Grade,
             Note: _Note
         });
+
+    }
+
+    function SaveAll() {
+
+        for (var p = 1; p < document.getElementById("children").childElementCount - 1; p++) {
+            saveChild(p);
+        }
 
     }
