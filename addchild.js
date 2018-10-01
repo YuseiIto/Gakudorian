@@ -34,7 +34,7 @@
         var i = document.getElementById("children").childElementCount;
         var p = i;
         var elm = document.createElement("tr");
-        elm.id = "Child" + i
+        elm.id = "Child" + p
 
         var str = "";
         if (flg) {
@@ -132,7 +132,14 @@
 
     function deleteChild(i) {
         //自分を削除
+
+
+        var ID = document.getElementById("child_ID_" + i).innerText;
+        firebase.database().ref('Gakudo/' + signedGakudo + "/Children/ID").remove();
+
         document.getElementById("Child" + i).parentNode.removeChild(document.getElementById("Child" + i));
+
+
     }
 
     function saveChild(i) {
@@ -150,6 +157,7 @@
             Note: _Note
         });
 
+        ReloadDB();
     }
 
     function SaveAll() {
