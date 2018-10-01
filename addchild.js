@@ -1,7 +1,7 @@
     let signedGakudo = "Donguri" //TODO: Meke it Generic
     var Children_ref = firebase.database().ref('Gakudo/' + signedGakudo + "/Children/");
 
-    var IDList = []; //Global
+    var IDList = [0]; //Global
 
     function RandomString() {
         // 生成する文字列の長さ
@@ -32,13 +32,19 @@
     }
 
 
-    function add() {
+    function add(flg) {
 
         var i = document.getElementById("children").childElementCount;
         var p = i;
         var elm = document.createElement("tr");
         elm.id = "Child" + i
-        elm.innerHTML = '<td> <h4 id ="child_ID_' + p + '">' + GenelateID() + ' </h4></td>\
+
+        var str = "";
+        if (flg) {
+            str = GenelateID();
+        }
+
+        elm.innerHTML = '<td> <h4 id ="child_ID_' + p + '">' + str + ' </h4></td>\
     <td><input type = "text" id = "child_Name_' + p + '"></td>\
     <td> <input type = "text" id = "child_Allergie_' + p + '"></td>\
     <td> <input type = "text"  id = "child_Grade_' + p + '"> </td>\
@@ -52,7 +58,7 @@
 
     function Display(ID, Name, Allergie, Grade, Parent, Note) {
 
-        add();
+        add(false);
 
 
         var trim = function(arg) {
@@ -66,6 +72,7 @@
 
         }
 
+        var p = document.getElementById("children").childElementCount - 1;
         document.getElementById("child_ID_" + p).innerText = trim(ID);
         document.getElementById("child_Name_" + p).value = trim(Name);
         document.getElementById("child_Allergie_" + p).value = trim(Allergie);
@@ -81,6 +88,17 @@
 
     function ReloadDB() {
         Children_ref.once('value').then(function(snapshot) {
+
+            IDList = [0]; //Reset
+            document.getElementById("children").innerHTML = '  <tr>\
+                <th> ID</th >\
+                    <th>氏名</th>\
+                    <th>アレルギー(カンマ区切り)</th>\
+                    <th>学年(1-6)</th>\
+                    <th>備考</th>\
+                    <th>保護者</th>\
+                    <td><input type="button" value="+" onclick="add(false);"></td>\
+            </tr>';
 
             snapshot.forEach(function(childSnapshot) {
                 // key will be "ada" the first time and "alan" the second time
