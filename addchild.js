@@ -135,7 +135,7 @@
 
 
         var ID = document.getElementById("child_ID_" + i).innerText;
-        firebase.database().ref('Gakudo/' + signedGakudo + "/Children/ID").remove();
+        firebase.database().ref('Gakudo/' + signedGakudo + "/Children/" + ID).remove();
 
         document.getElementById("Child" + i).parentNode.removeChild(document.getElementById("Child" + i));
 
