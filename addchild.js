@@ -19,12 +19,9 @@
     }
 
     function GenelateID() {
-        ReloadDB();
         var random = RandomString(); //これがIDの候補
-
         //すでに発行済のIDかどうか調べ、発行済なら再生成
         while (IDList.indexOf(random) != -1) {
-            ReloadDB();
             random = RandomString();
         }
 
@@ -125,7 +122,7 @@
 
     //ページ読み込み時に実行
     ReloadDB();
-    Children_ref.on('value', function(snapshot) {
+    Children_ref.on('value', function(snapshot) { //イベントリスナー
         ReloadDB();
     });
     //======================================================
