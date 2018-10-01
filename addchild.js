@@ -154,8 +154,9 @@
 
     function SaveAll() {
 
-        for (var p = 1; p < document.getElementById("children").childElementCount - 1; p++) {
+        for (var p = 1; p <= document.getElementById("children").childElementCount - 1; p++) {
             saveChild(p);
         }
 
+        ReloadDB();
     }
